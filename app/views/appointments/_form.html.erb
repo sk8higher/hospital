@@ -1,8 +1,7 @@
-<%= form_with(model: appointment) do |form| %>
+<%= form_with(model: appointment, class: "form-width-avg") do |form| %>
   <% if appointment.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
+      <h2>Ошибки:</h2>
       <ul>
         <% appointment.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,27 +10,37 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :patient_id, style: "display: block" %>
-    <%= form.text_field :patient_id %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :patient_id, "Пациент" %>
+      <%= form.select :patient_id, @patients.map { |p| [p.name, p.id] }, class: "form-select"  %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :doctor_id, style: "display: block" %>
-    <%= form.text_field :doctor_id %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :doctor_id, "Врач" %>
+      <%= form.select :doctor_id, @doctors.map { |d| [d.name, d.id] }, class: "form-select" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :department_id, style: "display: block" %>
-    <%= form.text_field :department_id %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :department_id, "Отделение" %>
+      <%= form.select :department_id, @departments.map { |dep| [dep.name, dep.id] }, class: "form-select" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :appointment_date, style: "display: block" %>
-    <%= form.date_field :appointment_date %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :appointment_date, "Дата приема" %>
+      <%= form.date_field :appointment_date, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group row mb-3">
+    <div class="col">
+      <%= form.submit "Отправить", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>

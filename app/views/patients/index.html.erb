@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Пациенты</h1>
+<%= link_to "Создать пациента", new_patient_path, class: "btn btn-outline-secondary" %>
 <hr>
 <div id="patients">
   <% @patients.each do |patient| %>
@@ -11,5 +12,3 @@
     <hr>
   <% end %>
 </div>
-
-<%= link_to "Создать пациента", new_patient_path, class: "btn btn-outline-secondary" %>

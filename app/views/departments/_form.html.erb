@@ -19,7 +19,7 @@
 
   <div class="form-group row mb-3 w-50">
     <div class="col">
-      <%= form.label :head_doctor_id, "Доктор" %>
+      <%= form.label :head_doctor_id, "Главный врач" %>
       <%= form.select :head_doctor_id, @doctors.map { |d| [d.name, d.id] }, class: "form-select" %>
     </div>
   </div>

@@ -1,21 +1,21 @@
 <div id="<%= dom_id appointment %>">
   <p>
-    <strong>Patient:</strong>
-    <%= appointment.patient_id %>
+    <strong>Пациент:</strong>
+    <%= appointment.patient.name %>
   </p>
 
   <p>
-    <strong>Doctor:</strong>
+    <strong>Врач:</strong>
     <%= appointment.doctor_id %>
   </p>
 
   <p>
-    <strong>Department:</strong>
-    <%= appointment.department_id %>
+    <strong>Отделение:</strong>
+    <%= appointment.department.name %>
   </p>
 
   <p>
-    <strong>Appointment date:</strong>
+    <strong>Дата приема:</strong>
     <%= appointment.appointment_date %>
   </p>
 
