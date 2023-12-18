@@ -1,8 +1,7 @@
-<%= form_with(model: patient) do |form| %>
+<%= form_with(model: patient, class: "form-width-avg") do |form| %>
   <% if patient.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-
+      <h2>Ошибки:</h2>
       <ul>
         <% patient.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,32 +10,44 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :name, "Имя" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :age, style: "display: block" %>
-    <%= form.number_field :age %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :age, "Возраст" %>
+      <%= form.number_field :age, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :gender, style: "display: block" %>
-    <%= form.text_field :gender %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :gender, "Пол" %>
+      <%= form.select :gender, options_for_select(["Мужской", "Женский"]), class: "form-select" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :address, "Адрес" %>
+      <%= form.text_field :address, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :phone, "Мобильный телефон" %>
+      <%= form.text_field :phone, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group row mb-3">
+    <div class="col">
+      <%= form.submit "Отправить", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>
