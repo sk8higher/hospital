@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_18_063319) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_18_080221) do
   create_table "appointments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "patient_id", null: false
     t.bigint "doctor_id", null: false
@@ -25,11 +25,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_063319) do
 
   create_table "departments", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name"
-    t.bigint "doctor_id", null: false
+    t.bigint "head_doctor_id", null: false
     t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_departments_on_doctor_id"
+    t.index ["head_doctor_id"], name: "index_departments_on_head_doctor_id"
   end
 
   create_table "doctors", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_18_063319) do
   add_foreign_key "appointments", "departments"
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "patients"
-  add_foreign_key "departments", "doctors"
+  add_foreign_key "departments", "doctors", column: "head_doctor_id"
   add_foreign_key "schedules", "departments"
   add_foreign_key "schedules", "doctors"
 end
