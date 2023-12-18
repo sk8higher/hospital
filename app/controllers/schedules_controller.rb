@@ -1,5 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[ show edit update destroy ]
+  before_action :set_doctors, only: %i[ new edit create update ]
+  before_action :set_departments, only: %i[ new edit create update ]
 
   # GET /schedules or /schedules.json
   def index
@@ -61,6 +63,14 @@ class SchedulesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
       @schedule = Schedule.find(params[:id])
+    end
+
+    def set_doctors
+      @doctors = Doctor.all
+    end
+
+    def set_departments
+      @departments = Department.all
     end
 
     # Only allow a list of trusted parameters through.
