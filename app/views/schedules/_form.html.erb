@@ -1,8 +1,7 @@
-<%= form_with(model: schedule) do |form| %>
+<%= form_with(model: schedule, class: "form-width-avg") do |form| %>
   <% if schedule.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
-
+      <h2>Ошибки:</h2>
       <ul>
         <% schedule.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,32 +10,44 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :doctor_id, style: "display: block" %>
-    <%= form.text_field :doctor_id %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :doctor_id, "Врач" %>
+      <%= form.select :doctor_id, @doctors.map { |d| [d.name, d.id ] }, class: "form-select" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :department_id, style: "display: block" %>
-    <%= form.text_field :department_id %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :department_id, "Отделение"%>
+      <%= form.select :department_id, @departments.map { |dep| [dep.name, dep.id] }, class: "form-select" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :day_of_week, style: "display: block" %>
-    <%= form.text_field :day_of_week %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :day_of_week, "День недели" %>
+      <%= form.weekday_select :day_of_week, day_format: :ru, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :start_time, style: "display: block" %>
-    <%= form.time_field :start_time %>
+  <div class="form-group row mb-3" style="width: 25%">
+    <div class="col">
+      <%= form.label :start_time %>
+      <%= form.time_field :start_time, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :end_time, style: "display: block" %>
-    <%= form.time_field :end_time %>
+  <div class="form-group row mb-3" style="width: 25%">
+    <div class="col">
+      <%= form.label :end_time %>
+      <%= form.time_field :end_time, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group row mb-3">
+    <div class="col">
+      <%= form.submit "Отправить", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>

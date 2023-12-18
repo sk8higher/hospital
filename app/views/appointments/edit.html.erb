@@ -1,10 +1,4 @@
-<h1>Editing appointment</h1>
+<h1 class="mt-3">Редактирование информации о приеме</h1>
 
 <%= render "form", appointment: @appointment %>
-
-<br>
-
-<div>
-  <%= link_to "Show this appointment", @appointment %> |
-  <%= link_to "Back to appointments", appointments_path %>
-</div>
+<%= link_to "Назад", appointments_path, class: "btn btn-outline-secondary" %>

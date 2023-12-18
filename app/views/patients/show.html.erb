@@ -3,8 +3,7 @@
 <%= render @patient %>
 
 <div>
-  <%= link_to "Edit this patient", edit_patient_path(@patient) %> |
-  <%= link_to "Back to patients", patients_path %>
-
-  <%= button_to "Destroy this patient", @patient, method: :delete %>
+  <%= link_to "Редактировать", edit_patient_path(@patient), class: "btn btn-primary" %>
+  <%= link_to "Назад", patients_path, class: "btn btn-outline-secondary" %>
+  <%= link_to "Удалить", @patients, data: { "turbo-method": :delete }, class: "btn btn-danger" %>
 </div>

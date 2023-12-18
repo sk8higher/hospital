@@ -1,9 +1,5 @@
-<h1>New schedule</h1>
+<h1 class="mt-2">Новое расписание</h1>
 
 <%= render "form", schedule: @schedule %>
 
-<br>
-
-<div>
-  <%= link_to "Back to schedules", schedules_path %>
-</div>
+<%= link_to "Назад", schedules_path, class: "btn btn-outline-secondary" %>

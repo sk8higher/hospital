@@ -3,8 +3,8 @@
 <%= render @schedule %>
 
 <div>
-  <%= link_to "Edit this schedule", edit_schedule_path(@schedule) %> |
-  <%= link_to "Back to schedules", schedules_path %>
+  <%= link_to "Редактировать", edit_schedule_path(@schedule), class: "btn btn-primary" %>
+  <%= link_to "Назад", schedules_path, class: "btn btn-outline-secondary" %>
 
-  <%= button_to "Destroy this schedule", @schedule, method: :delete %>
+  <%= link_to "Удалить", @schedule, data: { "turbo-method": :delete }, class: "btn btn-danger" %>
 </div>

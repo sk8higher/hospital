@@ -1,8 +1,7 @@
-<%= form_with(model: doctor) do |form| %>
+<%= form_with(model: doctor, class: "form-width-avg") do |form| %>
   <% if doctor.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
-
+      <h2>Ошибки:</h2>
       <ul>
         <% doctor.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,27 +10,37 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :name, "Имя" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :specialization, style: "display: block" %>
-    <%= form.text_field :specialization %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :specialization, "Специализация" %>
+      <%= form.text_field :specialization, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :experience, style: "display: block" %>
-    <%= form.text_field :experience %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :experience, "Опыт работы" %>
+      <%= form.text_field :experience, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :phone, "Мобильный телефон" %>
+      <%= form.text_field :phone, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group row mb-15">
+    <div class="col">
+      <%= form.submit "Отправить", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>

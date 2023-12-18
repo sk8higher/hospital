@@ -1,5 +1,8 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[ show edit update destroy ]
+  before_action :set_patients, only: %i[ create edit update new ]
+  before_action :set_doctors, only: %i[ create edit update new ]
+  before_action :set_departments, only: %i[ create edit update new ]
 
   # GET /appointments or /appointments.json
   def index
@@ -58,13 +61,26 @@ class AppointmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_appointment
-      @appointment = Appointment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def appointment_params
-      params.require(:appointment).permit(:patient_id, :doctor_id, :department_id, :appointment_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def set_patients
+    @patients = Patient.all
+  end
+
+  def set_doctors
+    @doctors = Doctor.all
+  end
+
+  def set_departments
+    @departments = Department.all
+  end
+
+  # Only allow a list of trusted parameters through.
+  def appointment_params
+    params.require(:appointment).permit(:patient_id, :doctor_id, :department_id, :appointment_date)
+  end
 end

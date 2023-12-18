@@ -1,14 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Schedules</h1>
-
+<h1>Расписания</h1>
+<%= link_to "Создать расписание", new_schedule_path, class: "btn btn-outline-secondary" %>
+<hr>
 <div id="schedules">
   <% @schedules.each do |schedule| %>
-    <%= render schedule %>
-    <p>
-      <%= link_to "Show this schedule", schedule %>
-    </p>
+    <h3>Врач: <%= schedule.doctor.name %></h3>
+    <%= link_to "Показать", schedule, class: "btn btn-primary" %>
+    <hr>
   <% end %>
 </div>
-
-<%= link_to "New schedule", new_schedule_path %>

@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Appointments</h1>
-
+<h1>Приемы</h1>
+<%= link_to "Создать прием", new_appointment_path, class: "btn btn-outline-secondary" %>
+<hr>
 <div id="appointments">
   <% @appointments.each do |appointment| %>
-    <%= render appointment %>
+    <h3>Прием №<%= appointment.id %> от <%= appointment.appointment_date.strftime("%d.%m.%Y") %></h3>
     <p>
-      <%= link_to "Show this appointment", appointment %>
+      <%= link_to "Показать", appointment, class: "btn btn-primary" %>
     </p>
+    <hr>
   <% end %>
 </div>
-
-<%= link_to "New appointment", new_appointment_path %>
