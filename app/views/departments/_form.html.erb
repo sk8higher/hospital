@@ -1,8 +1,7 @@
-<%= form_with(model: department) do |form| %>
+<%= form_with(model: department, class: "form-width-avg") do |form| %>
   <% if department.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(department.errors.count, "error") %> prohibited this department from being saved:</h2>
-
+      <h2>Ошибки:</h2>
       <ul>
         <% department.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,22 +10,30 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :name, "Название" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :head_doctor_id, style: "display: block" %>
-    <%= form.text_field :head_doctor_id %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :head_doctor_id, "Доктор" %>
+      <%= form.select :head_doctor_id, @doctors.map { |d| [d.name, d.id] }, class: "form-select" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :capacity, style: "display: block" %>
-    <%= form.number_field :capacity %>
+  <div class="form-group row mb-3 w-50">
+    <div class="col">
+      <%= form.label :capacity, "Вместимость" %>
+      <%= form.number_field :capacity, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group row mb-15">
+    <div class="col">
+      <%= form.submit "Отправить", class: "btn btn-success" %>
+    </div>
   </div>
 <% end %>

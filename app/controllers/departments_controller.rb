@@ -1,5 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: %i[ show edit update destroy ]
+  before_action :set_doctors, only: %i[ new edit create update ]
 
   # GET /departments or /departments.json
   def index
@@ -63,8 +64,12 @@ class DepartmentsController < ApplicationController
       @department = Department.find(params[:id])
     end
 
+    def set_doctors
+      @doctors = Doctor.all
+    end
+
     # Only allow a list of trusted parameters through.
     def department_params
-      params.require(:department).permit(:name, :doctor_id, :capacity)
+      params.require(:department).permit(:name, :head_doctor_id, :capacity)
     end
 end

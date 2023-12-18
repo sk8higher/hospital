@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Departments</h1>
-
+<h1>Отделения</h1>
+<hr>
 <div id="departments">
   <% @departments.each do |department| %>
-    <%= render department %>
-    <p>
-      <%= link_to "Show this department", department %>
-    </p>
+    <h3><%= department.name %></h3>
+    <%= link_to "Показать", department, class: "btn btn-primary" %>
+    <hr>
   <% end %>
 </div>
 
-<%= link_to "New department", new_department_path %>
+<%= link_to "Создать отделение", new_department_path, class: "btn btn-outline-secondary" %>
