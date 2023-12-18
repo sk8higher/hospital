@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Doctors</h1>
-
+<h1>Врачи</h1>
+<hr>
 <div id="doctors">
   <% @doctors.each do |doctor| %>
-    <%= render doctor %>
-    <p>
-      <%= link_to "Show this doctor", doctor %>
-    </p>
+    <h3><%= doctor.name %></h3>
+    <%= link_to "Показать", doctor, class: "btn btn-primary" %>
+    <hr>
   <% end %>
 </div>
 
-<%= link_to "New doctor", new_doctor_path %>
+<%= link_to "Создать врача", new_doctor_path, class: "btn btn-outline-secondary" %>
