@@ -16,12 +16,12 @@
 
   <p>
     <strong>Время начала работы:</strong>
-    <%= schedule.start_time %>
+    <%= schedule.start_time.strftime("%H:%M") %>
   </p>
 
   <p>
     <strong>Время окончания работы:</strong>
-    <%= schedule.end_time %>
+    <%= schedule.end_time.strftime("%H:%M")%>
   </p>
 
 </div>
