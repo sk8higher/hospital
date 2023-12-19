@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :doctors, only: %i[index]
     get "/all", to: "everything#index"
   end
+
   root "doctors#index"
 end
