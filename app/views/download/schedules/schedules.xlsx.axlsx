@@ -1,0 +1,17 @@
+wb = xlsx_package.workbook
+s = wb.styles
+
+highlight_cell = s.add_style(bg_color: "b8e5ff")
+left_cell = s.add_style(bg_color: "5bb6eb", b: true, border: {style: :thin, color: "000000", edges: [:top, :bottom, :left, :right]})
+time_cell = s.add_style(num_fmt: 20, bg_color: "b8e5ff")
+
+wb.add_worksheet(name: "Расписания") do |sheet|
+  schedules.each do |schedule|
+    sheet.add_row ['ID расписания', schedule.id], style: [left_cell, highlight_cell]
+    sheet.add_row ['Врач', schedule.doctor.name], style: [left_cell, highlight_cell]
+    sheet.add_row ['Отделение', schedule.department.name], style: [left_cell, highlight_cell, highlight_cell]
+    sheet.add_row ['День недели', schedule.day_of_week], style: [left_cell, highlight_cell]
+    sheet.add_row ['Время начала приема', schedule.start_time], style: [left_cell, time_cell]
+    sheet.add_row ['Время конца приема', schedule.end_time], style: [left_cell, time_cell]
+  end
+end
