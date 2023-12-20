@@ -21,6 +21,9 @@
         <li class="nav-item">
           <%= link_to "Приемы", appointments_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Скачать все данные (XLSX)", download_all_path(format: :zip), class: "nav-link" %>
+        </li>
       </ul>
     </div>
   </div>

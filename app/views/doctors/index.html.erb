@@ -2,6 +2,7 @@
 
 <h1>Врачи</h1>
 <%= link_to "Создать врача", new_doctor_path, class: "btn btn-outline-secondary" %>
+<%= link_to "Получить отчет (XSLX)", download_doctors_path(format: :zip), class: "btn btn-outline-primary" %>
 <hr>
 <div id="doctors">
   <% @doctors.each do |doctor| %>
