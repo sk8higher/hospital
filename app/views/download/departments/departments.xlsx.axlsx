@@ -1,0 +1,15 @@
+wb = xlsx_package.workbook
+s = wb.styles
+
+highlight_cell = s.add_style(bg_color: "b8e5ff")
+left_cell = s.add_style(bg_color: "5bb6eb", b: true, border: {style: :thin, color: "000000", edges: [:top, :bottom, :left, :right]})
+time_cell = s.add_style(num_fmt: 15, bg_color: "b8e5ff")
+
+wb.add_worksheet(name: "Отделения") do |sheet|
+  departments.each do |department|
+    sheet.add_row ['ID отделения', department.id, nil], style: [left_cell, highlight_cell, highlight_cell]
+    sheet.add_row ['Название', department.name, nil], style: [left_cell, highlight_cell, highlight_cell]
+    sheet.add_row ['Главный врач', department.head_doctor_id, department.doctor.name], style: [left_cell, highlight_cell, highlight_cell]
+    sheet.add_row ['Вместимость (чел.)', department.capacity, nil], style: [left_cell, highlight_cell, highlight_cell]
+  end
+end
