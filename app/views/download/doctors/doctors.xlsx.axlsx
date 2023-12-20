@@ -1,0 +1,16 @@
+wb = xlsx_package.workbook
+s = wb.styles
+
+highlight_cell = s.add_style(bg_color: "b8e5ff")
+left_cell = s.add_style(bg_color: "5bb6eb", b: true, border: {style: :thin, color: "000000", edges: [:top, :bottom, :left, :right]})
+time_cell = s.add_style(num_fmt: 15, bg_color: "b8e5ff")
+
+wb.add_worksheet(name: "Врачи") do |sheet|
+  doctors.each do |doctor|
+    sheet.add_row ['ID врача', doctor.id, nil], style: [left_cell, highlight_cell]
+    sheet.add_row ['Имя', doctor.name], style: [left_cell, highlight_cell]
+    sheet.add_row ['Специализация', doctor.specialization], style: [left_cell, highlight_cell]
+    sheet.add_row ['Опыт работы', doctor.experience], style: [left_cell, highlight_cell]
+    sheet.add_row ['Мобильный телефон', doctor.phone], style: [left_cell, highlight_cell]
+  end
+end
